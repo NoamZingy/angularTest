@@ -1,0 +1,35 @@
+<div class="row">
+     <mat-form-field>
+        <mat-label>Search By</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="updateAccountOwner()">
+            <mat-option *ngFor="let account of accounts" [value]="account.account_number">
+                {{account.account_number}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-success" (click)="showCurrentAccount()">show</button>
+    </div>
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">account</th>
+      <th scope="col">acrion type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let account of accounts; index as i">
+      <td>
+        {{ account.account_number}} </td>
+      <td> {{ account.type}}</td>
+      <td> {{ account.day}}</td>
+      <td> {{ account.amount}}</td>
+    </tr> 
+    </tbody>
+  </table>
+ 

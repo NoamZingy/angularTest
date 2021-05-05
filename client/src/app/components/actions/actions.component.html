@@ -1,0 +1,20 @@
+<div class="row">
+
+    <div class="col-8">
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter account number</mat-label>
+            <textarea  matInput [(ngModel)]="account_number"> </textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Chose action type</mat-label>
+            <textarea  matInput [(ngModel)]="type"> </textarea>
+        </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Chose amount</mat-label>
+        <textarea  matInput [(ngModel)]="amount"> </textarea>
+    </mat-form-field>
+<div>
+    <button type="button" class="btn btn-success" (click)="addNewTask(account_number,type, amount)">Add</button>
+</div>
