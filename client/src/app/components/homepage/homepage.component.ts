@@ -7,7 +7,7 @@ import {AccountsService} from 'src/app/services/accounts.service'
 })
 export class HomepageComponent implements OnInit {
   public accounts: any
-  public selected:number | null
+  public selected: number | null
   
   constructor(private AccountsService: AccountsService ) { 
     this.selected = null
@@ -17,15 +17,16 @@ export class HomepageComponent implements OnInit {
     this.getAllAccountsDB()
   }
 
-  updateAccountOwner(){
-  /*   this.selected = this.selected
-    console.log( this.selected) */
+  async updateAccountOwner(){
+  this.selected = this.selected
+    console.log( this.selected) 
+ /*  return  this.accounts = await this.AccountsService.getAccountByChange(this.selected) */
+  
+  
   }
 
-   async showCurrentAccount(/* account_number: number| null */){
-   /*  this.accounts =  await this.AccountsService.getAccountByChange(this.selected)
-    console.log( this.accounts) */
-   
+   async showCurrentAccount(){
+/*    this.accounts =  await this.AccountsService.getAccountByChange(this.selected) */
   }
   async getAllAccountsDB(){
     this.accounts = await this.AccountsService.getAllAccounts()

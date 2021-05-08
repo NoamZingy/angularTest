@@ -10,10 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import {MatToolbarModule} from '@angular/material/toolbar'
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule  } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import { ActionsFormComponent } from './components/actions-form/actions-form.component';
-
+import { MatInputModule } from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { ActionsFormComponent } from './components/actions-form/actions-form.com
     HomepageComponent,
     NavBerComponent,
     ActionsComponent,
-    ActionsFormComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,10 @@ import { ActionsFormComponent } from './components/actions-form/actions-form.com
     HttpClientModule,
     MatToolbarModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule, 
+    MatInputModule,
+    MatSnackBarModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]
