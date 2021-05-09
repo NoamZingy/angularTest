@@ -1,25 +1,48 @@
 
-
     <div class=" perfect-centering">
         <div class="row">
-        <mat-form-field class="example-full-width">
-            <mat-label>Enter account number</mat-label>
-            <input type="number"  matInput [(ngModel)]="account_number">
-        </mat-form-field>
+            <mat-form-field>
+                <mat-label>Choose account number</mat-label>
+                <mat-select [(value)]="account_number" matInput [(ngModel)]="account_number">
+                    <mat-option *ngFor="let account of accounts" [value]="account.account_number">
+                        {{account.account_number}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
     </div>
-        <div class="row">
-        <mat-form-field class="example-full-width">
-            <mat-label>Chose action type</mat-label>
-            <textarea  matInput [(ngModel)]="type"> </textarea>
-        </mat-form-field>
-        </div>
+
+    <div class="">
+        <mat-form-field  class="example-full-width">
+           <mat-label>Choose action type</mat-label>
+           <mat-select [(value)]="type" matInput [(ngModel)]="type" (selectionChange)="setLoanState()">
+               <mat-option *ngFor="let type of types" [value]="type">
+                   {{type}}
+               </mat-option>
+           </mat-select>
+       </mat-form-field>
+       <div>
+
         <div class=" row ">
     <mat-form-field class="example-full-width">
         <mat-label>Choose amount</mat-label>
         <input type="number"    matInput [(ngModel)]="amount"> 
     </mat-form-field>
     </div>
+
+    <div class=" row " *ngIf = "isLoan">
+        <mat-form-field class="example-full-width">
+            <mat-label >Choose interest precentage</mat-label>
+            <input type="number"    matInput [(ngModel)]="interest"> 
+        </mat-form-field>
+        </div>
+
+        <div class=" row " *ngIf = "isLoan">
+            <mat-form-field class="example-full-width">
+                <mat-label>Choose payment number</mat-label>
+                <input type="number"  matInput [(ngModel)]="payment"> 
+            </mat-form-field>
+            </div>
     <div class= "row">
-    <button type="button" class="btn btn-success" (click)="addNewTask(account_number,type, amount)"  
+    <button type="button" class="btn btn-success" (click)="addNewTask(account_number,type, amount, interest, payment)"  
     >Add</button>
 </div>

@@ -10,29 +10,50 @@ import {MatSnackBar} from '@angular/material/snack-bar'
 export class ActionsComponent implements OnInit {
  public account_number: number | null;
  public type: String | null ;
- public amount: number| null
-
+ public amount: number
+ public interest: number| null
+ public payment: number| null
+  public accounts: any 
+  public types: any
+  isLoan = false
   constructor(
   private AccountsService: AccountsService,
   public MatSnackBar: MatSnackBar
   ) { 
     this.account_number = null
     this.type = null
-    this.amount = null
+    this.amount = 0
+    this.interest = null
+    this.payment = null
+    this.types = ["pull", "deopsit", "loan"]
   }
 
   ngOnInit(): void {
-
+    this.getAllAccountsDB()
   }
-  async addNewTask(account_number : Number| null , type:String | null, amount:Number | null, ){
-    const result = await this.AccountsService.addTask(account_number , type, amount)
-    this.MatSnackBar.open('Action made successfully', 'Undo', {
+  async addNewTask(account_number : Number| null , type:String | null, amount:Number , interest: Number | null, payment: Number | null){
+    if (amount < 0) return
+    const result = await this.AccountsService.addTask(account_number , type, amount, interest, payment)
+    this.MatSnackBar.open(`${type} made successfully`, 'Undo', {
       duration: 3000
     });
     console.log(result)
   }
 
-
+  async getAllAccountsDB(){
+    this.accounts = await this.AccountsService.getAllAccounts()
+    console.log(this.accounts)
+   
+   
+  }
+ 
+  setLoanState(){
+if (this.type === 'loan'){
+  this.isLoan = true
+  console.log(this.isLoan)
+}
+else this.isLoan = false
+  }
   
 
 

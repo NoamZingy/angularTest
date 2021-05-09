@@ -7,30 +7,32 @@ import {AccountsService} from 'src/app/services/accounts.service'
 })
 export class HomepageComponent implements OnInit {
   public accounts: any
-  public selected: number | null
-  
+  public selected: any
+  public selectedAccount: any
   constructor(private AccountsService: AccountsService ) { 
-    this.selected = null
+this.selectedAccount = []
   }
 
   ngOnInit(): void {
     this.getAllAccountsDB()
   }
 
-  async updateAccountOwner(){
-  this.selected = this.selected
-    console.log( this.selected) 
- /*  return  this.accounts = await this.AccountsService.getAccountByChange(this.selected) */
-  
-  
+  updateAccountOwner(){
+   this.selected = this.selected
+   this.selectedAccount = []
+   this.selectedAccount = this.accounts.filter( (sel: any) => sel.account_number === this.selected.account_number)
+    /* this.selectedAccount.push(this.selected) */
+    console.log(this.selectedAccount);
   }
 
-   async showCurrentAccount(){
-/*    this.accounts =  await this.AccountsService.getAccountByChange(this.selected) */
-  }
+ 
   async getAllAccountsDB(){
     this.accounts = await this.AccountsService.getAllAccounts()
+    this.selectedAccount = this.accounts
     console.log(this.accounts)
+    console.log("im here");
+    console.log(this.selectedAccount);
+   
   }
  
 

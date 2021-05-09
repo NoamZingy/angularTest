@@ -3,7 +3,7 @@
      <mat-form-field>
         <mat-label>Search By</mat-label>
         <mat-select [(value)]="selected" (selectionChange)="updateAccountOwner()">
-            <mat-option *ngFor="let account of accounts" [value]="account.account_number">
+            <mat-option *ngFor="let account of accounts" [value]="account">
                 {{account.account_number}}
             </mat-option>
         </mat-select>
@@ -12,7 +12,7 @@
     </div>
     <div class="row">
       <div class=" col-sm-5 form-group">
-        <button type="button" class="btn btn-success" (click)="showCurrentAccount()">show</button>
+        <button type="button" class="btn btn-success" (click)="getAllAccountsDB()">show all accounts</button>
     </div>
 </div>
 </div>
@@ -25,15 +25,19 @@
       <th scope="col">action type</th>
       <th scope="col">date</th>
       <th scope="col">amount</th>
+      <th scope="col">interest</th>
+      <th scope="col">payment</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let account of accounts; index as i">
+    <tr *ngFor="let account of selectedAccount; index as i">
       <td>
         {{ account.account_number}} </td>
       <td> {{ account.type}}</td>
       <td> {{ account.day}}</td>
       <td> {{ account.amount}}</td>
+      <td> {{ account.interest}}</td>
+      <td> {{ account.payment}}</td>
     </tr> 
     </tbody>
   </table>

@@ -12,15 +12,15 @@ export class AccountsService {
     return this.http.get('http://localhost:5000/accounts').toPromise()
   }
 
-/*   getAccountByChange(account_number:any){
+  /* getAccountByChange(account_number:any){
     return this.http.get('http://localhost:5000/accounts', (account_number)).toPromise()
 
-  } */
+  } 
 
+ */
 
-
-  addTask(account_number : any , type:any, amount:any){
-    return this.http.post('http://localhost:5000/addTask' , {account_number , type, amount,}).toPromise()
+  addTask(account_number : any , type:any, amount:any ,interest:any , payment: any){
+    return this.http.post('http://localhost:5000/addTask' , {account_number , type, amount, interest, payment}).toPromise()
   } 
 
 }
